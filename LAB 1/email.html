@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+
+<form onsubmit="return validateForm()">
+    Email: <input type="text" id="email"><br><br>
+    Password: <input type="password" id="pass"><br><br>
+    Confirm Password: <input type="password" id="confirmPass"><br><br>
+    
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+function validateForm() {
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("pass").value.trim();
+    let confirmPass = document.getElementById("confirmPass").value.trim();
+
+    if (email === "" || password === "" || confirmPass === "") {
+        alert("All fields must not be empty!");
+        return false;
+    }
+
+    
+    if (!email.includes('@') || !email.includes('.')) {
+        alert("Email must include @ and .");
+        return false;
+    }
+
+    if (password.length < 6) {
+        alert("Password must have at least 6 characters!");
+        return false;
+    }
+
+    if (password !== confirmPass) {
+        alert("Passwords do not match!");
+        return false;
+    }
+
+    alert("Form submitted successfully!");
+    return true;
+}
+</script>
+
+</body>
+</html>
